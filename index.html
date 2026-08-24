@@ -13,63 +13,55 @@
 </head>
 <body>
 
-  <!-- BACKGROUND MUSIC (SOFT PIANO) -->
+  <!-- BACKGROUND MUSIC -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-108743.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FLOATING MUSIC CONTROLLER -->
+  <!-- MUSIC TOGGLE BUTTON -->
   <button id="music-btn" class="music-toggle-btn" aria-label="Toggle Music">
     <span id="music-icon">🎵</span>
   </button>
 
   <main>
-    <!-- ENVELOPE CONTAINER SECTION -->
-    <section class="envelope-wrapper" id="envelope-wrapper">
-      
-      <div class="envelope" id="envelope">
-        <!-- TOP FLAP -->
-        <div class="flap top-flap"></div>
-        
-        <!-- SIDE & BOTTOM FLAPS FOR 3D ENVELOPE LOOK -->
-        <div class="pocket"></div>
+    <!-- VIDEO MOTION SECTION -->
+    <section class="video-container" id="video-section">
+      <video id="motion-video" playsinline preload="auto">
+        <source src="assets/envelope-video.mp4" type="video/mp4">
+      </video>
 
-        <!-- THE INVITATION CARD (INSIDE ENVELOPE) -->
-        <div class="card" id="invite-card">
-          <p class="subtitle">Together with their families</p>
-          <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
-          <div class="divider">✦</div>
-          <p class="date">NOVEMBER 13, 2026</p>
-          <p class="venue">THE WESTIN CAIRO RESORT &amp; SPA</p>
-          <p class="venue-sub">Katameya Dunes, Cairo</p>
-          
-          <button class="scroll-down-btn" id="scroll-btn">SWIPE DOWN FOR DETAILS ↓</button>
-        </div>
-
-        <!-- CLICK TO OPEN OVERLAY SEAL -->
-        <div class="wax-seal" id="wax-seal">
-          <span>OPEN</span>
-        </div>
-
+      <!-- START OVERLAY -->
+      <div class="tap-overlay" id="tap-overlay">
+        <button class="tap-btn">TAP TO OPEN INVITATION</button>
       </div>
 
+      <!-- MAIN INVITATION CARD (FADES IN AFTER VIDEO FINISHES) -->
+      <div class="main-invite-card" id="main-card">
+        <p class="subtitle">Together with their families</p>
+        <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
+        <div class="divider">✦</div>
+        <p class="date">NOVEMBER 13, 2026</p>
+        <p class="venue">THE WESTIN CAIRO RESORT &amp; SPA</p>
+        <p class="venue-sub">Katameya Dunes, Cairo</p>
+        <button class="scroll-hint-btn" id="scroll-hint">SWIPE DOWN FOR DETAILS ↓</button>
+      </div>
     </section>
 
-    <!-- DETAILS SECTION (FADES IN ON SCROLL DOWN) -->
+    <!-- DETAILS SECTION (FADES IN ON SCROLL) -->
     <section class="details-section" id="details">
       
-      <!-- Location Card -->
+      <!-- Location -->
       <div class="content-card fade-in">
         <h2>Location</h2>
         <p class="venue-title">The Westin Cairo Resort &amp; Spa</p>
         <p class="venue-desc">
           Katameya Dunes, Cairo International Airport Road.<br>
-          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love.
+          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love under the evening sky.
         </p>
         <a href="https://maps.google.com/?q=The+Westin+Cairo" target="_blank" rel="noopener noreferrer" class="map-btn">OPEN GOOGLE MAPS</a>
       </div>
 
-      <!-- Schedule Card -->
+      <!-- Schedule -->
       <div class="content-card fade-in">
         <h2>Schedule</h2>
         <div class="timeline-container">
@@ -120,7 +112,7 @@
         </div>
       </div>
 
-      <!-- Additional Info -->
+      <!-- Additional Information -->
       <div class="content-card fade-in">
         <h2>Additional Information</h2>
         <p>No gifts, please — your presence is our greatest gift.</p>
@@ -134,7 +126,7 @@
 
       <!-- Couple Photo -->
       <div class="couple-photo-block fade-in">
-        <img alt="Sawsan &amp; Hassan" src="couple.jpg" class="couple-img">
+        <img alt="Sawsan &amp; Hassan" src="assets/couple.jpg" class="couple-img">
       </div>
 
     </section>
