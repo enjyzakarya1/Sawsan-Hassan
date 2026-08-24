@@ -3,17 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const card = document.getElementById("card-overlay");
   const audio = document.getElementById("bg-music");
 
-  // Fasten video playback speed (1.35x speed)
+  // Fasten video speed (1.4x faster)
   if (video) {
-    video.playbackRate = 1.35;
+    video.playbackRate = 1.4;
 
-    // Reveal overlay card when video finishes opening
+    // Reveal main name card smoothly when video ends
     video.addEventListener("ended", () => {
       card.classList.add("visible");
     });
   }
 
-  // Play background music on user's first tap/click anywhere on the page
+  // Play audio on first user tap/interaction
   const playAudio = () => {
     if (audio && audio.paused) {
       audio.play().catch((err) => console.log("Audio play deferred:", err));
