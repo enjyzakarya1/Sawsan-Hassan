@@ -1,6 +1,9 @@
 :root {
-  --olive-text: #556b2f;  /* Olive green used exclusively in text/typography */
-  --line-gold: #c5a059;   /* Metallic gold accent for lines */
+  --olive-text: #556b2f;      /* Primary Olive Green for Words/Typography */
+  --craft-bg: #dcc8b1;        /* Craft Paper Base Tone */
+  --craft-texture: #d2bc9f;   /* Warm Craft Accent Tone */
+  --line-gold: #b38f4f;       /* Subtle Gold Accent Lines */
+  --dark-text: #3c342a;       /* Warm Earthy Charcoal */
 }
 
 * {
@@ -10,20 +13,44 @@
 }
 
 body {
+  background-color: #121212;
+  font-family: 'Cinzel', serif;
+  color: var(--dark-text);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #121212;
-  font-family: 'Cinzel', serif;
-  overflow: hidden;
+}
+
+.invitation-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--craft-bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Craft Paper Texture & Styling */
+.craft-paper {
+  background-color: var(--craft-bg);
+  background-image: 
+    radial-gradient(var(--craft-texture) 15%, transparent 16%),
+    radial-gradient(var(--craft-texture) 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  border: 1px solid rgba(179, 143, 79, 0.3);
+}
+
+.envelope-hero {
+  position: relative;
+  width: 100%;
 }
 
 .envelope-wrapper {
   position: relative;
   width: 100%;
-  max-width: 480px; /* Restricts max size to fit within standard mobile screens nicely */
-  margin: 0 auto;
 }
 
 #envelope-video {
@@ -32,57 +59,206 @@ body {
   display: block;
 }
 
-/* Card Overlay - Blended with warm envelope shade instead of plain white */
+/* Main Card Overlay - Smoothed motion & craft blending */
 .card-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 78%; /* Scaled down slightly to fit inside the envelope boundary */
-  padding: 22px 16px;
-  
-  /* Cream paper background overlay to blend seamless with envelope */
-  background: rgba(246, 242, 235, 0.92); 
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(197, 160, 89, 0.4);
-  border-radius: 6px;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.06), 0 4px 15px rgba(0, 0, 0, 0.15);
-  
+  width: 82%;
+  padding: 24px 18px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08), 0 8px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
+  
+  /* Smooth transform/fade cubic-bezier transition */
+  transform: translate(-50%, -45%) scale(0.96);
   opacity: 0;
-  transition: opacity 0.35s ease-in-out; /* Fastened card fade-in */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out;
+  pointer-events: none;
 }
 
 .card-overlay.visible {
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+  pointer-events: auto;
 }
 
-/* Typography in Olive Green */
+/* Olive Green Words/Typography */
 .names-text {
   color: var(--olive-text);
   font-family: 'Great Vibes', cursive;
-  font-size: 2.3rem;
-  letter-spacing: 0.5px;
-  margin: 6px 0;
+  font-size: 2.6rem;
+  margin: 8px 0;
   font-weight: 400;
+  line-height: 1.1;
 }
 
-/* Decorative Line Dividers & Symbols (No Emojis) */
+.sub-heading {
+  color: var(--olive-text);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 4px 0;
+}
+
+/* Line Dividers (No Emojis) */
 .line-divider {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin: 6px 0;
+  margin: 10px 0;
 }
 
 .line-divider .line {
   height: 1px;
-  width: 45px;
+  width: 40px;
   background-color: var(--line-gold);
 }
 
 .line-divider .symbol {
   color: var(--olive-text);
   font-size: 0.85rem;
+}
+
+.quick-details {
+  margin-top: 12px;
+}
+
+.venue-title {
+  color: var(--olive-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.venue-subtitle, .time-text {
+  font-size: 0.8rem;
+  margin-top: 2px;
+  color: var(--dark-text);
+}
+
+.scroll-hint {
+  margin-top: 18px;
+  font-size: 0.7rem;
+  color: var(--olive-text);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scroll-hint .arrow {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Detailed Sections */
+.details-section {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.info-block {
+  text-align: center;
+  padding: 18px;
+  border: 1px solid rgba(85, 107, 47, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.section-title {
+  color: var(--olive-text);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.location-name {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.location-desc, .block-text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--dark-text);
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: 1px solid var(--olive-text);
+  color: var(--olive-text);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  background-color: var(--olive-text);
+  color: #fff;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(85, 107, 47, 0.3);
+  padding-bottom: 6px;
+  font-size: 0.85rem;
+}
+
+.timeline-item .time {
+  color: var(--olive-text);
+  font-weight: 600;
+}
+
+/* Dress Code Palette */
+.color-palette {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.color-1 { background-color: #556b2f; }
+.color-2 { background-color: #046307; }
+.color-3 { background-color: #f4efe6; }
+
+/* Photo */
+.photo-block {
+  text-align: center;
+}
+
+.couple-img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
