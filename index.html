@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Wedding of Sawsan & Hassan</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +13,9 @@
 </head>
 <body>
 
-  <!-- BACKGROUND MUSIC -->
+  <!-- ROMANTIC SOFT PIANO AUDIO -->
   <audio id="bg-music" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-108743.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a735e5.mp3?filename=romantic-piano-wedding-10657.mp3" type="audio/mpeg">
   </audio>
 
   <!-- MUSIC TOGGLE BUTTON -->
@@ -23,7 +23,7 @@
     <span id="music-icon">🎵</span>
   </button>
 
-  <main>
+  <main class="page-container">
     <!-- VIDEO MOTION SECTION -->
     <section class="video-container" id="video-section">
       <video id="motion-video" playsinline preload="auto" muted>
@@ -32,10 +32,10 @@
 
       <!-- START OVERLAY -->
       <div class="tap-overlay" id="tap-overlay">
-        <button class="tap-btn">TAP TO OPEN INVITATION</button>
+        <button class="tap-btn">OPEN INVITATION</button>
       </div>
 
-      <!-- MAIN INVITATION CARD (FADES IN AFTER VIDEO FINISHES) -->
+      <!-- MAIN INVITATION CARD (FADES IN OVER VIDEO) -->
       <div class="main-invite-card" id="main-card">
         <p class="subtitle">Together with their families</p>
         <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
@@ -47,7 +47,7 @@
       </div>
     </section>
 
-    <!-- DETAILS SECTION (FADES IN ON SCROLL) -->
+    <!-- DETAILS SECTION -->
     <section class="details-section" id="details">
       
       <!-- Location -->
