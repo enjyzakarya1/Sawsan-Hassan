@@ -1,37 +1,53 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const envelope = document.getElementById("envelope");
+  const envelopeWrapper = document.getElementById("envelope-wrapper");
   const bgMusic = document.getElementById("bg-music");
   const musicBtn = document.getElementById("music-btn");
   const musicIcon = document.getElementById("music-icon");
-  const enterBtn = document.getElementById("enter-btn");
-  const details = document.getElementById("details");
+  const scrollBtn = document.getElementById("scroll-btn");
+  const detailsSection = document.getElementById("details");
 
   if (bgMusic) bgMusic.load();
 
-  function toggleAudio() {
-    if (!bgMusic) return;
-
-    if (bgMusic.paused) {
+  function playMusic() {
+    if (bgMusic && bgMusic.paused) {
       bgMusic.play().then(() => {
         if (musicIcon) musicIcon.textContent = "🎵";
       }).catch(err => console.log("Audio block:", err));
+    }
+  }
+
+  function toggleMusic() {
+    if (!bgMusic) return;
+    if (bgMusic.paused) {
+      playMusic();
     } else {
       bgMusic.pause();
       if (musicIcon) musicIcon.textContent = "🔇";
     }
   }
 
-  if (enterBtn) {
-    enterBtn.addEventListener("click", () => {
-      toggleAudio();
-      details.scrollIntoView({ behavior: "smooth" });
+  // OPEN ENVELOPE ON CLICK
+  envelope.addEventListener("click", () => {
+    if (!envelope.classList.contains("open")) {
+      envelope.classList.add("open");
+      envelopeWrapper.classList.add("expanded");
+      playMusic();
+    }
+  });
+
+  if (scrollBtn) {
+    scrollBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      detailsSection.scrollIntoView({ behavior: "smooth" });
     });
   }
 
   if (musicBtn) {
-    musicBtn.addEventListener("click", toggleAudio);
+    musicBtn.addEventListener("click", toggleMusic);
   }
 
-  // INTERSECTION OBSERVER FOR SOFT SCROLL REVEAL
+  // SMOOTH SCROLL REVEAL FOR EVENT DETAILS
   const fadeElements = document.querySelectorAll(".fade-in");
   const observerOptions = {
     threshold: 0.15
