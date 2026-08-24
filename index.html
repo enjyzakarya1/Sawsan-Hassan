@@ -13,51 +13,63 @@
 </head>
 <body>
 
-  <!-- BACKGROUND VIDEO LAYER -->
-  <video id="bg-video" autoplay loop muted playsinline class="video-background">
-    <source src="bg-video.mp4" type="video/mp4">
-  </video>
-
-  <!-- SOFT EMOTIONAL PIANO MUSIC (DIRECT URL) -->
+  <!-- BACKGROUND MUSIC (SOFT PIANO) -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-108743.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- MUSIC TOGGLE BUTTON -->
+  <!-- FLOATING MUSIC CONTROLLER -->
   <button id="music-btn" class="music-toggle-btn" aria-label="Toggle Music">
     <span id="music-icon">🎵</span>
   </button>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="hero-container">
-      <div class="motion-card">
-        <p class="subtitle">Together with their families</p>
-        <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
-        <div class="divider">✦</div>
-        <p class="date">NOVEMBER 13, 2026</p>
-        <p class="venue">THE WESTIN CAIRO RESORT &amp; SPA</p>
-        <p class="venue-sub">Katameya Dunes, Cairo</p>
+    <!-- ENVELOPE CONTAINER SECTION -->
+    <section class="envelope-wrapper" id="envelope-wrapper">
+      
+      <div class="envelope" id="envelope">
+        <!-- TOP FLAP -->
+        <div class="flap top-flap"></div>
+        
+        <!-- SIDE & BOTTOM FLAPS FOR 3D ENVELOPE LOOK -->
+        <div class="pocket"></div>
 
-        <button class="enter-btn" id="enter-btn">TAP TO ENTER &amp; PLAY MUSIC</button>
+        <!-- THE INVITATION CARD (INSIDE ENVELOPE) -->
+        <div class="card" id="invite-card">
+          <p class="subtitle">Together with their families</p>
+          <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
+          <div class="divider">✦</div>
+          <p class="date">NOVEMBER 13, 2026</p>
+          <p class="venue">THE WESTIN CAIRO RESORT &amp; SPA</p>
+          <p class="venue-sub">Katameya Dunes, Cairo</p>
+          
+          <button class="scroll-down-btn" id="scroll-btn">SWIPE DOWN FOR DETAILS ↓</button>
+        </div>
+
+        <!-- CLICK TO OPEN OVERLAY SEAL -->
+        <div class="wax-seal" id="wax-seal">
+          <span>OPEN</span>
+        </div>
+
       </div>
+
     </section>
 
-    <!-- DETAILS SECTION WITH FADE-IN ANIMATIONS -->
+    <!-- DETAILS SECTION (FADES IN ON SCROLL DOWN) -->
     <section class="details-section" id="details">
       
-      <!-- Location -->
+      <!-- Location Card -->
       <div class="content-card fade-in">
         <h2>Location</h2>
         <p class="venue-title">The Westin Cairo Resort &amp; Spa</p>
         <p class="venue-desc">
           Katameya Dunes, Cairo International Airport Road.<br>
-          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love under the evening sky.
+          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love.
         </p>
         <a href="https://maps.google.com/?q=The+Westin+Cairo" target="_blank" rel="noopener noreferrer" class="map-btn">OPEN GOOGLE MAPS</a>
       </div>
 
-      <!-- Schedule -->
+      <!-- Schedule Card -->
       <div class="content-card fade-in">
         <h2>Schedule</h2>
         <div class="timeline-container">
@@ -117,7 +129,7 @@
       <!-- A Little Note -->
       <div class="content-card fade-in">
         <h2>A Little Note</h2>
-        <p>We love your little ones dearly, but tonight is your night off! Call the babysitter, put on your dancing shoes, and let’s celebrate adult-style uninterrupted. 🥂</p>
+        <p>We love your little ones dearly, but tonight is your night off! Call the babysitter, put on your dancing shoes, and let’s celebrate uninterrupted. 🥂</p>
       </div>
 
       <!-- Couple Photo -->
