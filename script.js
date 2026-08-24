@@ -1,80 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const motionVideo = document.getElementById("motion-video");
-  const tapOverlay = document.getElementById("tap-overlay");
-  const mainCard = document.getElementById("main-card");
-  const bgMusic = document.getElementById("bg-music");
-  const musicBtn = document.getElementById("music-btn");
-  const musicIcon = document.getElementById("music-icon");
-  const scrollHint = document.getElementById("scroll-hint");
-  const detailsSection = document.getElementById("details");
+  const video = document.getElementById("envelope-video");
+  const card = document.getElementById("card-overlay");
+  const audio = document.getElementById("bg-music");
 
-  if (bgMusic) bgMusic.load();
+  // Fasten video playback speed (1.35x speed)
+  if (video) {
+    video.playbackRate = 1.35;
 
-  function playAudio() {
-    if (bgMusic && bgMusic.paused) {
-      bgMusic.play().then(() => {
-        if (musicIcon) musicIcon.textContent = "🎵";
-      }).catch(err => console.log("Audio play error:", err));
-    }
-  }
-
-  function toggleAudio() {
-    if (!bgMusic) return;
-    if (bgMusic.paused) {
-      playAudio();
-    } else {
-      bgMusic.pause();
-      if (musicIcon) musicIcon.textContent = "🔇";
-    }
-  }
-
-  // TAP TO UNMUTE AND PLAY
-  tapOverlay.addEventListener("click", () => {
-    tapOverlay.style.opacity = "0";
-    setTimeout(() => {
-      tapOverlay.style.display = "none";
-    }, 800);
-
-    playAudio();
-
-    if (motionVideo) {
-      motionVideo.muted = false;
-      motionVideo.play().catch(err => console.log("Video play error:", err));
-    }
-  });
-
-  // FADE IN MAIN CARD WHEN VIDEO FINISHES
-  if (motionVideo) {
-    motionVideo.addEventListener("ended", () => {
-      mainCard.classList.add("show");
+    // Reveal overlay card when video finishes opening
+    video.addEventListener("ended", () => {
+      card.classList.add("visible");
     });
   }
 
-  // SMOOTH SCROLL BUTTON
-  if (scrollHint) {
-    scrollHint.addEventListener("click", () => {
-      detailsSection.scrollIntoView({ behavior: "smooth" });
-    });
-  }
-
-  if (musicBtn) {
-    musicBtn.addEventListener("click", toggleAudio);
-  }
-
-  // SCROLL REVEAL OBSERVER
-  const fadeElements = document.querySelectorAll(".fade-in");
-  const observerOptions = {
-    threshold: 0.15
+  // Play background music on user's first tap/click anywhere on the page
+  const playAudio = () => {
+    if (audio && audio.paused) {
+      audio.play().catch((err) => console.log("Audio play deferred:", err));
+    }
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  fadeElements.forEach(el => observer.observe(el));
+  document.body.addEventListener("click", playAudio, { once: true });
+  document.body.addEventListener("touchstart", playAudio, { once: true });
 });
