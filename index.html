@@ -2,135 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>The Wedding of Sawsan & Hassan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sawsan & Hassan</title>
   
+  <!-- Font Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ROMANTIC SOFT PIANO AUDIO -->
+  <!-- Background Music Audio -->
   <audio id="bg-music" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a735e5.mp3?filename=romantic-piano-wedding-10657.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- MUSIC TOGGLE BUTTON -->
-  <button id="music-btn" class="music-toggle-btn" aria-label="Toggle Music">
-    <span id="music-icon">🎵</span>
-  </button>
+  <!-- Envelope Video Container -->
+  <div class="envelope-wrapper">
+    <video id="envelope-video" autoplay muted playsinline>
+      <source src="envelope-video.mp4" type="video/mp4">
+    </video>
 
-  <main class="page-container">
-    <!-- VIDEO MOTION SECTION -->
-    <section class="video-container" id="video-section">
-      <video id="motion-video" playsinline preload="auto" muted>
-        <source src="envelope-video.mp4" type="video/mp4">
-      </video>
-
-      <!-- START OVERLAY -->
-      <div class="tap-overlay" id="tap-overlay">
-        <button class="tap-btn">OPEN INVITATION</button>
-      </div>
-
-      <!-- MAIN INVITATION CARD (FADES IN OVER VIDEO) -->
-      <div class="main-invite-card" id="main-card">
-        <p class="subtitle">Together with their families</p>
-        <h1 class="names">Sawsan <span class="ampersand">&amp;</span> Hassan</h1>
-        <div class="divider">✦</div>
-        <p class="date">NOVEMBER 13, 2026</p>
-        <p class="venue">THE WESTIN CAIRO RESORT &amp; SPA</p>
-        <p class="venue-sub">Katameya Dunes, Cairo</p>
-        <button class="scroll-hint-btn" id="scroll-hint">SWIPE DOWN FOR DETAILS ↓</button>
-      </div>
-    </section>
-
-    <!-- DETAILS SECTION -->
-    <section class="details-section" id="details">
-      
-      <!-- Location -->
-      <div class="content-card fade-in">
-        <h2>Location</h2>
-        <p class="venue-title">The Westin Cairo Resort &amp; Spa</p>
-        <p class="venue-desc">
-          Katameya Dunes, Cairo International Airport Road.<br>
-          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love under the evening sky.
-        </p>
-        <a href="https://maps.google.com/?q=The+Westin+Cairo" target="_blank" rel="noopener noreferrer" class="map-btn">OPEN GOOGLE MAPS</a>
-      </div>
-
-      <!-- Schedule -->
-      <div class="content-card fade-in">
-        <h2>Schedule</h2>
-        <div class="timeline-container">
-          <div class="timeline-line"></div>
-          
-          <div class="timeline-item left">
-            <div class="timeline-content">
-              <span class="time">6:00 PM</span>
-              <span class="event">Guests arrival</span>
-            </div>
-            <div class="timeline-dot"></div>
-          </div>
-
-          <div class="timeline-item right">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="time">7:00 PM</span>
-              <span class="event">Ceremony</span>
-            </div>
-          </div>
-
-          <div class="timeline-item left">
-            <div class="timeline-content">
-              <span class="time">8:00 PM</span>
-              <span class="event">Wedding dinner</span>
-            </div>
-            <div class="timeline-dot"></div>
-          </div>
-
-          <div class="timeline-item right">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="time">12:00 AM</span>
-              <span class="event">End of evening</span>
-            </div>
-          </div>
+    <!-- Overlay Card (Fits and blends into envelope texture, no white box) -->
+    <div id="card-overlay" class="card-overlay">
+      <div class="card-content">
+        
+        <!-- Top Line Accent & Geometric Symbol -->
+        <div class="line-divider">
+          <span class="line"></span>
+          <span class="symbol">&#10043;</span>
+          <span class="line"></span>
         </div>
-      </div>
 
-      <!-- Dress Code -->
-      <div class="content-card fade-in">
-        <h2>Dress Code</h2>
-        <p>Formal or cocktail attire suggested in olive green and ivory tones.</p>
-        <div class="color-palette">
-          <span class="swatch color-olive"></span>
-          <span class="swatch color-dark-olive"></span>
-          <span class="swatch color-ivory"></span>
+        <!-- Olive Green Names Typography -->
+        <h1 class="names-text">Sawsan & Hassan</h1>
+
+        <!-- Bottom Line Accent & Geometric Symbol -->
+        <div class="line-divider">
+          <span class="line"></span>
+          <span class="symbol">&#10048;</span>
+          <span class="line"></span>
         </div>
-      </div>
 
-      <!-- Additional Information -->
-      <div class="content-card fade-in">
-        <h2>Additional Information</h2>
-        <p>No gifts, please — your presence is our greatest gift.</p>
       </div>
-
-      <!-- A Little Note -->
-      <div class="content-card fade-in">
-        <h2>A Little Note</h2>
-        <p>We love your little ones dearly, but tonight is your night off! Call the babysitter, put on your dancing shoes, and let’s celebrate uninterrupted. 🥂</p>
-      </div>
-
-      <!-- Couple Photo -->
-      <div class="couple-photo-block fade-in">
-        <img alt="Sawsan &amp; Hassan" src="couple.jpg" class="couple-img">
-      </div>
-
-    </section>
-  </main>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
