@@ -3,52 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sawsan & Hassan</title>
+  <title>Sawsan & Hassan - Wedding Invitation</title>
   
   <!-- Font Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background Music Audio -->
+  <!-- Background Music -->
   <audio id="bg-music" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Envelope Video Container -->
-  <div class="envelope-wrapper">
-    <video id="envelope-video" autoplay muted playsinline>
-      <source src="envelope-video.mp4" type="video/mp4">
-    </video>
+  <main class="invitation-container">
+    
+    <!-- Hero / Envelope & Video Intro Section -->
+    <section class="envelope-hero">
+      <div class="envelope-wrapper">
+        <video id="envelope-video" autoplay muted playsinline>
+          <source src="envelope-video.mp4" type="video/mp4">
+        </video>
 
-    <!-- Overlay Card (Fits and blends into envelope texture, no white box) -->
-    <div id="card-overlay" class="card-overlay">
-      <div class="card-content">
-        
-        <!-- Top Line Accent & Geometric Symbol -->
-        <div class="line-divider">
-          <span class="line"></span>
-          <span class="symbol">&#10043;</span>
-          <span class="line"></span>
+        <!-- Main Names Card: Craft Paper Styled -->
+        <div id="card-overlay" class="card-overlay craft-paper">
+          <div class="card-inner">
+            
+            <div class="line-divider">
+              <span class="line"></span>
+              <span class="symbol">&#10043;</span>
+              <span class="line"></span>
+            </div>
+
+            <p class="sub-heading">Together with their families</p>
+            <h1 class="names-text">Sawsan & Hassan</h1>
+            <p class="sub-heading">invite you to celebrate their wedding</p>
+
+            <div class="line-divider">
+              <span class="line"></span>
+              <span class="symbol">&#10048;</span>
+              <span class="line"></span>
+            </div>
+
+            <div class="quick-details">
+              <p class="venue-title">THE WESTIN CAIRO</p>
+              <p class="venue-subtitle">Cairo International Airport Road</p>
+              <p class="time-text">6:00 PM</p>
+            </div>
+
+            <div class="scroll-hint">
+              <span>Scroll Down For Details</span>
+              <span class="arrow">&darr;</span>
+            </div>
+
+          </div>
         </div>
-
-        <!-- Olive Green Names Typography -->
-        <h1 class="names-text">Sawsan & Hassan</h1>
-
-        <!-- Bottom Line Accent & Geometric Symbol -->
-        <div class="line-divider">
-          <span class="line"></span>
-          <span class="symbol">&#10048;</span>
-          <span class="line"></span>
-        </div>
-
       </div>
-    </div>
-  </div>
+    </section>
+
+    <!-- Detailed Content Section (Theme Matched to Envelope & Craft) -->
+    <section id="details-section" class="details-section craft-paper">
+      
+      <!-- Location Section -->
+      <div class="info-block">
+        <h2 class="section-title">Location</h2>
+        <p class="location-name">The Westin Cairo Resort & Spa</p>
+        <p class="location-desc">
+          Katameya Dunes, Cairo International Airport Road.<br>
+          A tranquil oasis surrounded by lush greenery — the perfect setting to celebrate our love under the evening sky.
+        </p>
+        <a href="https://maps.google.com/?q=The+Westin+Cairo" target="_blank" rel="noopener noreferrer" class="map-btn">
+          OPEN GOOGLE MAPS
+        </a>
+      </div>
+
+      <!-- Schedule / Timeline Section -->
+      <div class="info-block">
+        <h2 class="section-title">Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="time">6:00 PM</span>
+            <span class="event">Guests Arrival</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">7:00 PM</span>
+            <span class="event">Ceremony</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">8:00 PM</span>
+            <span class="event">Wedding Dinner</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">12:00 AM</span>
+            <span class="event">End of Evening</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dress Code Section -->
+      <div class="info-block">
+        <h2 class="section-title">Dress Code</h2>
+        <p class="block-text">
+          We’d be delighted if your outfits complemented our wedding color palette. Formal or cocktail attire suggested.
+        </p>
+        <div class="color-palette">
+          <span class="swatch color-1" title="Olive Green"></span>
+          <span class="swatch color-2" title="Emerald Green"></span>
+          <span class="swatch color-3" title="Ivory Cream"></span>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="info-block">
+        <h2 class="section-title">Additional Information</h2>
+        <p class="block-text">
+          No gifts, please — your presence is our greatest gift.
+        </p>
+      </div>
+
+      <!-- A Little Note -->
+      <div class="info-block">
+        <h2 class="section-title">A Little Note</h2>
+        <p class="block-text">
+          We love your little ones dearly, but tonight is your night off! Call the babysitter, put on your dancing shoes, and let’s celebrate adult-style uninterrupted. &#129346;
+        </p>
+      </div>
+
+      <!-- Couple Photo -->
+      <div class="photo-block">
+        <img src="couple.jpg" alt="Sawsan & Hassan" class="couple-img">
+      </div>
+
+    </section>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
