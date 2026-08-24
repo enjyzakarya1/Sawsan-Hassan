@@ -6,159 +6,225 @@
 
 body, html {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background-color: #3b4731; /* Deep Olive Green Base */
-  color: #2c3523;
+  background-color: #2b3623; /* Olive Green Base */
+  color: #fffdf8;
   overflow-x: hidden;
 }
 
-/* FULLSCREEN VIDEO BACKGROUND */
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 1;
-  filter: brightness(0.65);
-}
-
-/* FLOATING MUSIC BUTTON */
+/* MUSIC TOGGLE BUTTON */
 .music-toggle-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 100;
-  background: rgba(255, 253, 248, 0.25);
+  z-index: 200;
+  background: rgba(255, 253, 248, 0.2);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 253, 248, 0.4);
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #fff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* HERO CONTAINER */
-.hero-container {
-  position: relative;
-  z-index: 2;
+/* ENVELOPE CONTAINER */
+.envelope-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
+  perspective: 1000px;
 }
 
-/* MOTION CARD - IVORY BG & OLIVE TEXT */
-.motion-card {
-  background: rgba(255, 253, 248, 0.94); /* Warm Ivory */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(112, 128, 96, 0.4);
-  border-radius: 12px;
-  padding: 3rem 1.5rem;
-  max-width: 420px;
+.envelope {
+  position: relative;
   width: 100%;
-  text-align: center;
+  max-width: 380px;
+  height: 260px;
+  background: #3c4933;
+  border-radius: 6px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+/* TOP TRIANGULAR FLAP */
+.top-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 190px solid transparent;
+  border-right: 190px solid transparent;
+  border-top: 140px solid #4a5a40;
+  transform-origin: top;
+  transition: transform 0.8s ease 0.2s, z-index 0.2s ease 0.4s;
+  z-index: 5;
+}
+
+/* ENVELOPE POCKET COVER */
+.pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #32402a 0%, #293422 100%);
+  clip-path: polygon(0% 100%, 100% 100%, 100% 35%, 50% 65%, 0% 35%);
+  z-index: 4;
+  border-radius: 0 0 6px 6px;
+}
+
+/* WAX SEAL BUTTON */
+.wax-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: #708060;
+  border: 2px solid #fffdf8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.wax-seal span {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #fffdf8;
+}
+
+/* INVITATION CARD (SLIDES OUT) */
+.card {
+  position: absolute;
+  left: 5%;
+  top: 10px;
+  width: 90%;
+  background: #fffdf8; /* Soft Ivory */
   color: #2c3523;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 2.5rem 1.2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(0);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, opacity 0.5s ease 0.6s;
 }
 
 .subtitle {
-  font-size: 0.75rem;
-  letter-spacing: 3px;
+  font-size: 0.7rem;
+  letter-spacing: 2.5px;
   color: #556248;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   text-transform: uppercase;
 }
 
 .names {
   font-family: 'Alex Brush', cursive;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   line-height: 1.1;
   color: #2c3523;
-  font-weight: 400;
 }
 
 .ampersand {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 2rem;
+  font-size: 1.8rem;
   display: block;
   margin: 0.2rem 0;
   color: #708060;
 }
 
 .divider {
-  margin: 1.2rem 0;
+  margin: 1rem 0;
   color: #708060;
-  font-size: 1rem;
 }
 
 .date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: 2px;
-  margin-bottom: 1.2rem;
-  color: #2c3523;
+  margin-bottom: 1rem;
 }
 
 .venue {
-  font-size: 0.8rem;
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
   font-weight: 500;
 }
 
 .venue-sub {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #556248;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 }
 
-.enter-btn {
-  margin-top: 2rem;
-  background: #3b4731; /* Olive Green Button */
-  color: #fffdf8; /* Ivory Text */
+.scroll-down-btn {
+  margin-top: 1.5rem;
+  background: transparent;
   border: none;
-  padding: 0.85rem 1.6rem;
-  font-size: 0.75rem;
+  color: #708060;
+  font-size: 0.65rem;
   letter-spacing: 2px;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  width: 100%;
+  font-weight: 600;
 }
 
-.enter-btn:hover {
-  background: #2c3523;
+/* OPEN ANIMATION CLASSES */
+.envelope.open .top-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+.envelope.open .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.envelope.open .card {
+  opacity: 1;
+  transform: translateY(-240px);
+  z-index: 10;
+}
+
+.envelope-wrapper.expanded {
+  min-height: 120vh; /* Adjust layout after card pops up */
 }
 
 /* DETAILS SECTION */
 .details-section {
-  position: relative;
-  z-index: 2;
-  max-width: 500px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 3rem 1.2rem;
+  padding: 2rem 1.2rem 4rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .content-card {
-  background: rgba(255, 253, 248, 0.95);
+  background: rgba(255, 253, 248, 0.96);
   color: #2c3523;
-  padding: 2.2rem 1.5rem;
+  padding: 2rem 1.4rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .content-card h2 {
@@ -170,12 +236,12 @@ body, html {
 
 .map-btn {
   display: inline-block;
-  margin-top: 1.2rem;
-  padding: 0.7rem 1.4rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
   border: 1px solid #3b4731;
   color: #3b4731;
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 1.5px;
 }
 
@@ -199,7 +265,7 @@ body, html {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-item.left {
@@ -234,12 +300,12 @@ body, html {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .swatch {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
 }
 
@@ -247,7 +313,6 @@ body, html {
 .color-dark-olive { background-color: #3b4731; }
 .color-ivory { background-color: #fffdf8; border: 1px solid #ccc; }
 
-/* PHOTO */
 .couple-photo-block {
   width: 100%;
 }
@@ -259,10 +324,10 @@ body, html {
   border-radius: 8px;
 }
 
-/* SOFT FADE-IN ANIMATION ON SCROLL */
+/* FADE-IN ON SCROLL */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(35px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
