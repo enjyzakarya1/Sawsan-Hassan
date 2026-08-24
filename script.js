@@ -1,53 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const envelope = document.getElementById("envelope");
-  const envelopeWrapper = document.getElementById("envelope-wrapper");
+  const motionVideo = document.getElementById("motion-video");
+  const tapOverlay = document.getElementById("tap-overlay");
+  const mainCard = document.getElementById("main-card");
   const bgMusic = document.getElementById("bg-music");
   const musicBtn = document.getElementById("music-btn");
   const musicIcon = document.getElementById("music-icon");
-  const scrollBtn = document.getElementById("scroll-btn");
+  const scrollHint = document.getElementById("scroll-hint");
   const detailsSection = document.getElementById("details");
 
   if (bgMusic) bgMusic.load();
 
-  function playMusic() {
+  function playAudio() {
     if (bgMusic && bgMusic.paused) {
       bgMusic.play().then(() => {
         if (musicIcon) musicIcon.textContent = "🎵";
-      }).catch(err => console.log("Audio block:", err));
+      }).catch(err => console.log("Audio play error:", err));
     }
   }
 
-  function toggleMusic() {
+  function toggleAudio() {
     if (!bgMusic) return;
     if (bgMusic.paused) {
-      playMusic();
+      playAudio();
     } else {
       bgMusic.pause();
       if (musicIcon) musicIcon.textContent = "🔇";
     }
   }
 
-  // OPEN ENVELOPE ON CLICK
-  envelope.addEventListener("click", () => {
-    if (!envelope.classList.contains("open")) {
-      envelope.classList.add("open");
-      envelopeWrapper.classList.add("expanded");
-      playMusic();
+  // TAP TO START VIDEO & MUSIC
+  tapOverlay.addEventListener("click", () => {
+    tapOverlay.style.opacity = "0";
+    setTimeout(() => {
+      tapOverlay.style.display = "none";
+    }, 600);
+
+    playAudio();
+
+    if (motionVideo) {
+      motionVideo.play().catch(err => console.log("Video play error:", err));
     }
   });
 
-  if (scrollBtn) {
-    scrollBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
+  // WHEN VIDEO ENDS, SHOW MAIN CARD SOFTLY
+  if (motionVideo) {
+    motionVideo.addEventListener("ended", () => {
+      mainCard.classList.add("show");
+    });
+  }
+
+  // SWIPE DOWN HINT BUTTON
+  if (scrollHint) {
+    scrollHint.addEventListener("click", () => {
       detailsSection.scrollIntoView({ behavior: "smooth" });
     });
   }
 
   if (musicBtn) {
-    musicBtn.addEventListener("click", toggleMusic);
+    musicBtn.addEventListener("click", toggleAudio);
   }
 
-  // SMOOTH SCROLL REVEAL FOR EVENT DETAILS
+  // SMOOTH SCROLL REVEAL OBSERVER
   const fadeElements = document.querySelectorAll(".fade-in");
   const observerOptions = {
     threshold: 0.15
