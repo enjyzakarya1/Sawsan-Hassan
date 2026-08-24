@@ -28,29 +28,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // TAP TO START VIDEO & MUSIC
+  // TAP TO UNMUTE AND PLAY
   tapOverlay.addEventListener("click", () => {
     tapOverlay.style.opacity = "0";
     setTimeout(() => {
       tapOverlay.style.display = "none";
-    }, 600);
+    }, 800);
 
     playAudio();
 
     if (motionVideo) {
-      motionVideo.muted = false; // Unmute video on touch
+      motionVideo.muted = false;
       motionVideo.play().catch(err => console.log("Video play error:", err));
     }
   });
 
-  // WHEN VIDEO ENDS, SHOW MAIN CARD SOFTLY
+  // FADE IN MAIN CARD WHEN VIDEO FINISHES
   if (motionVideo) {
     motionVideo.addEventListener("ended", () => {
       mainCard.classList.add("show");
     });
   }
 
-  // SWIPE DOWN HINT BUTTON
+  // SMOOTH SCROLL BUTTON
   if (scrollHint) {
     scrollHint.addEventListener("click", () => {
       detailsSection.scrollIntoView({ behavior: "smooth" });
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     musicBtn.addEventListener("click", toggleAudio);
   }
 
-  // SMOOTH SCROLL REVEAL OBSERVER
+  // SCROLL REVEAL OBSERVER
   const fadeElements = document.querySelectorAll(".fade-in");
   const observerOptions = {
     threshold: 0.15
