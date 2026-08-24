@@ -8,9 +8,20 @@ body, html {
   width: 100%;
   min-height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background-color: #2b3623; /* Deep Olive Green */
-  color: #fffdf8; /* Ivory Text */
+  /* Deep blend color matching dark video background tones */
+  background: #0f140d; 
+  color: #fffdf8;
   overflow-x: hidden;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 480px; /* Constrains display to perfect phone proportions */
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f140d 0%, #1a2217 40%, #232c1e 100%);
+  position: relative;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 /* MUSIC TOGGLE BUTTON */
@@ -19,9 +30,9 @@ body, html {
   bottom: 20px;
   right: 20px;
   z-index: 200;
-  background: rgba(255, 253, 248, 0.25);
+  background: rgba(255, 253, 248, 0.15);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 253, 248, 0.4);
+  border: 1px solid rgba(255, 253, 248, 0.3);
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -31,25 +42,26 @@ body, html {
   justify-content: center;
   font-size: 1.1rem;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-/* VIDEO CONTAINER */
+/* VIDEO CONTAINER (PREVENTS OVER-ZOOMING ON MOBILE) */
 .video-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1f2719;
   overflow: hidden;
+  background: #0f140d;
 }
 
 #motion-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Prevents extreme cropping/zooming */
+  background-color: #0f140d;
 }
 
 /* TAP OVERLAY */
@@ -59,54 +71,55 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(43, 54, 35, 0.65);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 20, 13, 0.75);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.8s ease;
 }
 
 .tap-btn {
   background: #fffdf8;
-  color: #2b3623;
+  color: #1a2217;
   border: none;
-  padding: 1rem 2rem;
-  font-size: 0.75rem;
-  letter-spacing: 2.5px;
-  border-radius: 4px;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  border-radius: 30px;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
-/* MAIN INVITATION CARD (FADES IN AFTER VIDEO ENDS) */
+/* MAIN CARD (BLENDED FROSTED LOOK) */
 .main-invite-card {
   position: absolute;
   z-index: 5;
-  background: rgba(255, 253, 248, 0.94); /* Warm Ivory */
-  color: #2b3623;
-  padding: 3rem 1.5rem;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
+  background: rgba(255, 253, 248, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 253, 248, 0.6);
+  color: #1a2217;
+  padding: 2.5rem 1.5rem;
+  border-radius: 16px;
+  width: 88%;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(25px) scale(0.96);
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
 .main-invite-card.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
 .subtitle {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 2.5px;
   color: #556248;
   margin-bottom: 0.8rem;
@@ -115,9 +128,9 @@ body, html {
 
 .names {
   font-family: 'Alex Brush', cursive;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   line-height: 1.1;
-  color: #2b3623;
+  color: #1a2217;
   font-weight: 400;
 }
 
@@ -126,39 +139,39 @@ body, html {
   font-style: italic;
   font-size: 1.8rem;
   display: block;
-  margin: 0.2rem 0;
-  color: #708060;
+  margin: 0.1rem 0;
+  color: #6a7c5b;
 }
 
 .divider {
-  margin: 1.2rem 0;
-  color: #708060;
+  margin: 1rem 0;
+  color: #6a7c5b;
 }
 
 .date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .venue {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 1.5px;
   font-weight: 500;
 }
 
 .venue-sub {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: #556248;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
 .scroll-hint-btn {
-  margin-top: 1.8rem;
+  margin-top: 1.5rem;
   background: transparent;
   border: none;
-  color: #708060;
+  color: #6a7c5b;
   font-size: 0.65rem;
   letter-spacing: 2px;
   cursor: pointer;
@@ -167,39 +180,40 @@ body, html {
 
 /* DETAILS SECTION */
 .details-section {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 3rem 1.2rem 4rem 1.2rem;
+  padding: 2rem 1.2rem 4rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .content-card {
-  background: rgba(255, 253, 248, 0.96);
-  color: #2b3623;
-  padding: 2.2rem 1.4rem;
-  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(10px);
+  color: #1a2217;
+  padding: 2rem 1.4rem;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 253, 248, 0.5);
 }
 
 .content-card h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   margin-bottom: 0.8rem;
-  color: #2b3623;
+  color: #1a2217;
 }
 
 .map-btn {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.65rem 1.3rem;
-  border: 1px solid #2b3623;
-  color: #2b3623;
+  border: 1px solid #1a2217;
+  color: #1a2217;
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 1.5px;
+  border-radius: 4px;
 }
 
 /* TIMELINE */
@@ -214,7 +228,7 @@ body, html {
   bottom: 0;
   left: 50%;
   width: 1px;
-  background: #708060;
+  background: #6a7c5b;
   transform: translateX(-50%);
 }
 
@@ -222,7 +236,7 @@ body, html {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-item.left {
@@ -242,14 +256,19 @@ body, html {
   left: 50%;
   width: 8px;
   height: 8px;
-  background: #2b3623;
+  background: #1a2217;
   border-radius: 50%;
   transform: translateX(-50%);
 }
 
 .timeline-content .time {
   font-weight: 600;
+  font-size: 0.8rem;
   display: block;
+}
+
+.timeline-content .event {
+  font-size: 0.75rem;
 }
 
 /* COLOR PALETTE */
@@ -266,8 +285,8 @@ body, html {
   border-radius: 50%;
 }
 
-.color-olive { background-color: #708060; }
-.color-dark-olive { background-color: #2b3623; }
+.color-olive { background-color: #6a7c5b; }
+.color-dark-olive { background-color: #1a2217; }
 .color-ivory { background-color: #fffdf8; border: 1px solid #ccc; }
 
 .couple-photo-block {
@@ -278,10 +297,11 @@ body, html {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* FADE IN ANIMATION ON SCROLL DOWN */
+/* FADE IN SCROLL ANIMATION */
 .fade-in {
   opacity: 0;
   transform: translateY(35px);
