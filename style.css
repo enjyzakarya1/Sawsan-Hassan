@@ -8,8 +8,8 @@ body, html {
   width: 100%;
   min-height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background-color: #2b3623; /* Olive Green Base */
-  color: #fffdf8;
+  background-color: #2b3623; /* Deep Olive Green */
+  color: #fffdf8; /* Ivory Text */
   overflow-x: hidden;
 }
 
@@ -19,7 +19,7 @@ body, html {
   bottom: 20px;
   right: 20px;
   z-index: 200;
-  background: rgba(255, 253, 248, 0.2);
+  background: rgba(255, 253, 248, 0.25);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 253, 248, 0.4);
   border-radius: 50%;
@@ -34,98 +34,75 @@ body, html {
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* ENVELOPE CONTAINER */
-.envelope-wrapper {
-  min-height: 100vh;
+/* VIDEO CONTAINER */
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  perspective: 1000px;
+  background-color: #1f2719;
+  overflow: hidden;
 }
 
-.envelope {
-  position: relative;
+#motion-video {
   width: 100%;
-  max-width: 380px;
-  height: 260px;
-  background: #3c4933;
-  border-radius: 6px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: transform 0.6s ease;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* TOP TRIANGULAR FLAP */
-.top-flap {
+/* TAP OVERLAY */
+.tap-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
-  border-left: 190px solid transparent;
-  border-right: 190px solid transparent;
-  border-top: 140px solid #4a5a40;
-  transform-origin: top;
-  transition: transform 0.8s ease 0.2s, z-index 0.2s ease 0.4s;
-  z-index: 5;
-}
-
-/* ENVELOPE POCKET COVER */
-.pocket {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #32402a 0%, #293422 100%);
-  clip-path: polygon(0% 100%, 100% 100%, 100% 35%, 50% 65%, 0% 35%);
-  z-index: 4;
-  border-radius: 0 0 6px 6px;
-}
-
-/* WAX SEAL BUTTON */
-.wax-seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: #708060;
-  border: 2px solid #fffdf8;
-  border-radius: 50%;
+  background: rgba(43, 54, 35, 0.65);
+  backdrop-filter: blur(4px);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 6;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 0.6s ease;
 }
 
-.wax-seal span {
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  font-weight: 600;
-  color: #fffdf8;
+.tap-btn {
+  background: #fffdf8;
+  color: #2b3623;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* INVITATION CARD (SLIDES OUT) */
-.card {
+/* MAIN INVITATION CARD (FADES IN AFTER VIDEO ENDS) */
+.main-invite-card {
   position: absolute;
-  left: 5%;
-  top: 10px;
+  z-index: 5;
+  background: rgba(255, 253, 248, 0.94); /* Warm Ivory */
+  color: #2b3623;
+  padding: 3rem 1.5rem;
+  border-radius: 12px;
+  max-width: 400px;
   width: 90%;
-  background: #fffdf8; /* Soft Ivory */
-  color: #2c3523;
-  border-radius: 8px;
-  padding: 2.5rem 1.2rem;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  z-index: 3;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  pointer-events: none;
+}
+
+.main-invite-card.show {
+  opacity: 1;
   transform: translateY(0);
-  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, opacity 0.5s ease 0.6s;
+  pointer-events: auto;
 }
 
 .subtitle {
@@ -138,9 +115,10 @@ body, html {
 
 .names {
   font-family: 'Alex Brush', cursive;
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   line-height: 1.1;
-  color: #2c3523;
+  color: #2b3623;
+  font-weight: 400;
 }
 
 .ampersand {
@@ -153,13 +131,13 @@ body, html {
 }
 
 .divider {
-  margin: 1rem 0;
+  margin: 1.2rem 0;
   color: #708060;
 }
 
 .date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   letter-spacing: 2px;
   margin-bottom: 1rem;
 }
@@ -176,8 +154,8 @@ body, html {
   margin-top: 0.3rem;
 }
 
-.scroll-down-btn {
-  margin-top: 1.5rem;
+.scroll-hint-btn {
+  margin-top: 1.8rem;
   background: transparent;
   border: none;
   color: #708060;
@@ -187,59 +165,38 @@ body, html {
   font-weight: 600;
 }
 
-/* OPEN ANIMATION CLASSES */
-.envelope.open .top-flap {
-  transform: rotateX(180deg);
-  z-index: 2;
-}
-
-.envelope.open .wax-seal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-}
-
-.envelope.open .card {
-  opacity: 1;
-  transform: translateY(-240px);
-  z-index: 10;
-}
-
-.envelope-wrapper.expanded {
-  min-height: 120vh; /* Adjust layout after card pops up */
-}
-
 /* DETAILS SECTION */
 .details-section {
   max-width: 480px;
   margin: 0 auto;
-  padding: 2rem 1.2rem 4rem 1.2rem;
+  padding: 3rem 1.2rem 4rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .content-card {
   background: rgba(255, 253, 248, 0.96);
-  color: #2c3523;
-  padding: 2rem 1.4rem;
+  color: #2b3623;
+  padding: 2.2rem 1.4rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .content-card h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   margin-bottom: 0.8rem;
-  color: #3b4731;
+  color: #2b3623;
 }
 
 .map-btn {
   display: inline-block;
   margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  border: 1px solid #3b4731;
-  color: #3b4731;
+  padding: 0.65rem 1.3rem;
+  border: 1px solid #2b3623;
+  color: #2b3623;
   text-decoration: none;
   font-size: 0.7rem;
   letter-spacing: 1.5px;
@@ -265,7 +222,7 @@ body, html {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.6rem;
 }
 
 .timeline-item.left {
@@ -285,7 +242,7 @@ body, html {
   left: 50%;
   width: 8px;
   height: 8px;
-  background: #3b4731;
+  background: #2b3623;
   border-radius: 50%;
   transform: translateX(-50%);
 }
@@ -310,7 +267,7 @@ body, html {
 }
 
 .color-olive { background-color: #708060; }
-.color-dark-olive { background-color: #3b4731; }
+.color-dark-olive { background-color: #2b3623; }
 .color-ivory { background-color: #fffdf8; border: 1px solid #ccc; }
 
 .couple-photo-block {
@@ -324,7 +281,7 @@ body, html {
   border-radius: 8px;
 }
 
-/* FADE-IN ON SCROLL */
+/* FADE IN ANIMATION ON SCROLL DOWN */
 .fade-in {
   opacity: 0;
   transform: translateY(35px);
