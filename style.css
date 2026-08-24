@@ -1,7 +1,6 @@
 :root {
   --olive-text: #556b2f;      /* Primary Olive Green for Words/Typography */
-  --craft-bg: #dcc8b1;        /* Craft Paper Base Tone */
-  --craft-texture: #d2bc9f;   /* Warm Craft Accent Tone */
+  --craft-bg: #d7c4ad;        /* Clean, solid warm craft paper tone (no dots) */
   --line-gold: #b38f4f;       /* Subtle Gold Accent Lines */
   --dark-text: #3c342a;       /* Warm Earthy Charcoal */
 }
@@ -12,7 +11,8 @@
   padding: 0;
 }
 
-body {
+/* Hide scrollbar completely while allowing scrolling */
+html, body {
   background-color: #121212;
   font-family: 'Cinzel', serif;
   color: var(--dark-text);
@@ -20,26 +20,31 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow: hidden; /* Removes browser scrollbars */
 }
 
+/* Container for mobile frame */
 .invitation-container {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
   background-color: var(--craft-bg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
+  overflow-y: scroll;
   max-height: 100vh;
+
+  /* Hides visible scrollbar line on right side across browsers */
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-/* Craft Paper Texture & Styling */
+.invitation-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Clean Craft Paper Style without dotted pattern */
 .craft-paper {
   background-color: var(--craft-bg);
-  background-image: 
-    radial-gradient(var(--craft-texture) 15%, transparent 16%),
-    radial-gradient(var(--craft-texture) 15%, transparent 16%);
-  background-size: 60px 60px;
-  background-position: 0 0, 30px 30px;
   border: 1px solid rgba(179, 143, 79, 0.3);
 }
 
@@ -59,7 +64,7 @@ body {
   display: block;
 }
 
-/* Main Card Overlay - Smoothed motion & craft blending */
+/* Main Card Overlay - Smoothed motion */
 .card-overlay {
   position: absolute;
   top: 50%;
@@ -67,10 +72,9 @@ body {
   width: 82%;
   padding: 24px 18px;
   border-radius: 8px;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08), 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05), 0 8px 25px rgba(0, 0, 0, 0.15);
   text-align: center;
   
-  /* Smooth transform/fade cubic-bezier transition */
   transform: translate(-50%, -45%) scale(0.96);
   opacity: 0;
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out;
@@ -83,7 +87,7 @@ body {
   pointer-events: auto;
 }
 
-/* Olive Green Words/Typography */
+/* Olive Green Typography */
 .names-text {
   color: var(--olive-text);
   font-family: 'Great Vibes', cursive;
@@ -101,7 +105,7 @@ body {
   margin: 4px 0;
 }
 
-/* Line Dividers (No Emojis) */
+/* Line Dividers */
 .line-divider {
   display: flex;
   align-items: center;
@@ -171,7 +175,7 @@ body {
   padding: 18px;
   border: 1px solid rgba(85, 107, 47, 0.2);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .section-title {
