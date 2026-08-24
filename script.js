@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playAudio();
 
     if (motionVideo) {
+      motionVideo.muted = false; // Unmute video on touch
       motionVideo.play().catch(err => console.log("Video play error:", err));
     }
   });
